@@ -25,7 +25,7 @@ SECRET_KEY = '*pdk-*ubg!t5(#r!kn(4#!k=c(@x%sb3niv24@c^!=6b#4zo^-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [*]
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'SIS',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
 
