@@ -76,7 +76,7 @@ $(document).ready(function() {
     var textWrapper = document.querySelector('.ml6 .letters');
     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-    anime.timeline({ loop: 6 })
+    anime.timeline({ loop: 5 })
         .add({
             targets: '.ml6 .letter',
             translateY: ["1.1em", 0],

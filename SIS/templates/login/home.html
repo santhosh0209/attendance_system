@@ -1,9 +1,32 @@
 <!-- landing page starts -->
-{% extends 'base.html' %} {% load static %} {% block body %}
+{% extends 'base.html' %} {% load static %} {% block preloader %}
+<!--preloader starts-->
+
+
+<div class="loader_bg">
+    <div class="loader"></div>
+</div>
+
+
+<!--preloader ends-->
+{% endblock %} {% block body %}
+
+
+
+
 <section id="home" class="site-title">
     <div class="content">
-        <h2 id="line"><span id="typed"></span></h2>
-        <a style="outline: none;" href="#featuress"> <button class="btn">Explore</button></a>
+        <h1 class="ml6">
+            <span class="text-wrapper">
+              <span class="letters">Attend Today And Achieve Tomorrow...</span>
+            </span>
+        </h1>
+        <a id="neon" href="">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span> EXPLORE
+        </a>
     </div>
 </section>
 
@@ -20,7 +43,7 @@
     <div class="site-background" data-aos="fade-up" data-aos-delay="100">
 
 
-        <h3 id="uem">University Events Manager</h3>
+        <h3 id="uem">Online Attendance Manager</h3>
 
         <div class="content">
             <h1 id="line"><span id="typed2"></span></h1>
@@ -31,6 +54,21 @@
     </div>
 </section>
 <!-- features area ends -->
+
+<!-- -------------------about us ----- -->
+
+<div class="about">
+    <div class="heading">
+        <h1>About Us</h1>
+    </div>
+    <div class="abt-content">
+        <p>Student attendance management system deals with the maintenance of the student's attendance details. It generates the attendance of the student on basis of presence in class. It is maintained on the daily basis of their attendance. The staffs
+            will be provided with the separate username & password to make the student's status. The staffs handling the particular subjects responsible to make the attendance for all students. Only if the student present on that particular period, then
+            the attendance will be calculated. The students attendance reports based on weekly and consolidate will be generated.</p>
+    </div>
+</div>
+
+
 
 
 <!-- -----services area starts----- -->
@@ -44,8 +82,9 @@
                     <div class="service">
                         <div class="service-logo">
                             <i class="fa fa-calendar" aria-hidden="true"></i> </div>
-                        <h4>Handling Events</h4>
-                        <p>"We handle all kinds of Events such as Techinical, Non Techinical, Seminars, Webinar, symposium, Workshops etc.."<span style="visibility: hidden;">aaa aaaaaaaaaaa aaa aaaaaaaaaaa aaaaaaa aaaaaa aaaaaaaaa aaaaaa aaaaaaaaa aaaaaaaa aaaaaa </span></p>
+                        <h4>Maintain Attendance</h4>
+
+                        <p>"We do maintain attendance of each and every student in the class. And we also calculate the overall attendance."<span style="visibility: hidden;">aaa aaaaaaaaaaa aaa aaaaaaaa aaaa aaaaaaaaa aaaaaaaa aaaaaa </span></p>
                     </div>
                     <div class="shadowone"></div>
                     <div class="shadowtwo"></div>
@@ -56,8 +95,9 @@
                     <div class="service">
                         <div class="service-logo">
                             <i class="fa fa-user-o" aria-hidden="true"></i> </div>
-                        <h4>Quick Registration</h4>
-                        <p>"Here We allow you to quick registration for the events that is available. This Saves lots of time and your energy." <span style="visibility: hidden;">aaa aaaaaaaaaaa aaa aaaaaaaaaaa aaaaaaa aaaaaa aaaaaaaaa aaaaaa aaaaaaaaa aaaaaaaa aaaaaa </span></p>
+                        <h4>Quick Login</h4>
+
+                        <p>"We Provide One-Step Login to our website which allows the user to login with their unique username and password" <span style="visibility: hidden;">aaa aaaaaaaaaaa aaa aaaaaa aaaaaa aaaaaaaaa aaaaaaaa aaaaaa </span></p>
                     </div>
                     <div class="shadowone"></div>
                     <div class="shadowtwo"></div>
@@ -67,9 +107,9 @@
                 <div class="main">
                     <div class="service">
                         <div class="service-logo">
-                            <i style="font-size: 4rem; margin-right: 1rem;" class="fa fa-rocket" aria-hidden="true"></i> </div>
+                            <i style="font-size: 5.7rem; margin-right: 1rem;" class="fa fa-rocket" aria-hidden="true"></i> </div>
                         <h4>Universal Access</h4>
-                        <p>"We provide Universal Access to this website. One can use this website anywhere from this world and also register for any events."<span id="sp" style="visibility: hidden;">aaa aaa  aaaa aaaaaa aaa aa aa aa aaaa aaaa aaa a aaaaa aaa aaa aa aa </span></p>
+                        <p>"We provide Universal Access to this website. One can use this website anywhere from this world and also view their attendance progress."<span id="sp" style="visibility: hidden;">aaa aaa  aaaa aaaaaa aaa aa aa aa aaaa aaaa aaa a aaaaa aaa aaa aa aa </span></p>
                     </div>
                     <div class="shadowone"></div>
                     <div class="shadowtwo"></div>
@@ -84,11 +124,10 @@
 
 
 
-
 <!-- -----footer area starts -->
 
 <div class="footer">
-    <h1>&copy; All Rights Reserved||Developed by <a href="https://dreamcreators.cf/">Dream Creators</a></h1>
+    <h1>&copy; All Rights Reserved||Developed by <a style="font-weight: 900;" href="">Harish Kumar</a></h1>
 </div>
 
 
@@ -97,6 +136,25 @@
 
 <!-- ---------------------------------------------------javascript files----------------------------------------------------- -->
 
+<!-- -----jquery cdn----- -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js "></script>
 
+<!-- -----typed js----- -->
+<script src="{% static 'js/typed.min.js' %}"></script>
+
+<!-- -----imagesloaded js----- -->
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+<!-- ------isotope galery cdn----- -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+
+<!-- -----custom js----- -->
+<script src="{% static 'js/main.js' %}"></script>
+
+
+</body>
+
+</html>
 
 {% endblock %}
