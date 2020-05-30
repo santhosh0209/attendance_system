@@ -1,5 +1,6 @@
 from django.db import models
-from django.core.urlresolvers import reverse
+
+from django.urls import reverse
 from django.contrib.auth.models import AbstractUser,AbstractBaseUser,User
 
 class Faculty(models.Model):
@@ -33,7 +34,7 @@ class Student(models.Model):
         return reverse('detail', kwargs={'slug': self.user.username})
 
 class LeaveRequest(models.Model):
-    faculty=models.ForeignKey(to=Faculty, related_name="request", null=True, blank=True)
+    faculty=models.ForeignKey(to=Faculty, related_name="request", null=True, blank=True,on_delete=models.CASCADE)
     start=models.DateField()
     end=models.DateField()
     type=models.IntegerField(
@@ -60,11 +61,11 @@ class LeaveRecord(models.Model):
 
 class Subject(models.Model):
     subject_name=models.CharField(max_length=100)
-    faculty=models.ForeignKey(to=Faculty, related_name="teaches", null=True, blank=True)
+    faculty=models.ForeignKey(to=Faculty, related_name="teaches", null=True, blank=True,on_delete=models.CASCADE)
 
 class SelectedSubject(models.Model):
-    subject=models.ForeignKey(to=Subject, related_name="studies", null=True, blank=True)
-    student=models.ForeignKey(to=Student, related_name="selected", null=True, blank=True)
+    subject=models.ForeignKey(to=Subject, related_name="studies", null=True, blank=True,on_delete=models.CASCADE)
+    student=models.ForeignKey(to=Student, related_name="selected", null=True, blank=True,on_delete=models.CASCADE)
 
     def percentage(self):
         p,a=self.present(),self.absent()
@@ -90,6 +91,6 @@ class SelectedSubject(models.Model):
 
 
 class AttendanceRecord(models.Model):
-    selected_subject=models.ForeignKey(to=SelectedSubject, related_name="attendance", null=True, blank=True)
+    selected_subject=models.ForeignKey(to=SelectedSubject, related_name="attendance", null=True, blank=True,on_delete=models.CASCADE)
     Date=models.DateField(null=True)
     present=models.BooleanField()

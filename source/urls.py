@@ -1,5 +1,6 @@
 from django.conf.urls import url,include
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.views import LoginView,LogoutView,PasswordResetView,PasswordChangeDoneView,PasswordResetCompleteView,PasswordResetConfirmView
 from django.contrib import admin
 from SIS.views import *
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -9,8 +10,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home, name='home'),
     url(r'^home$', homepage, name='homepage'),
-    url(r'^login$', auth_views.login, {'template_name': 'login.html'},name='login'),
-    url(r'^logout$', auth_views.logout, {'next_page' : '/login'},name='logout'),
+    url(r'^login$', LoginView.as_view(), {'template_name': '/login.html'},name='login'),
+    url(r'^logout$', LogoutView.as_view(), {'next_page' : '/login'},name='logout'),
     url(r'^accounts/login$', loginFirst, name='loginfirst'),
     url(r'^search$', SearchView.as_view(), name='search'),
     url(r'register$', UserFormView.as_view(), name='register'),
@@ -38,12 +39,12 @@ urlpatterns = [
 ]
 
 urlpatterns +=[
-    url(r'^accounts/password/reset/$', auth_views.password_reset, {'template_name': 'update_form.html'}),
-    url(r'^accounts/login/$', auth_views.login, {'template_name': 'login.html'}),
-    url(r'^user/password/reset/$',auth_views.password_reset,{'post_reset_redirect' : '/user/password/reset/done/'},name="password_reset"),
-    url(r'^user/password/reset/done/$',auth_views.password_reset_done,name="password_reset_done"),
-    url(r'^user/password/reset/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',auth_views.password_reset_confirm,{'post_reset_redirect' : '/user/password/done/'},name="password_reset_confirm"),
-    url(r'^user/password/done/$',auth_views.password_reset_complete,name="password_reset_done"),
+    url(r'^accounts/password/reset/$', PasswordResetView.as_view(), {'template_name': 'update_form.html'}),
+    url(r'^accounts/login/$', LoginView.as_view(), {'template_name': 'login.html'}),
+    url(r'^user/password/reset/$',PasswordResetView.as_view(),{'post_reset_redirect' : '/user/password/reset/done/'},name="password_reset"),
+    url(r'^user/password/reset/done/$',PasswordChangeDoneView.as_view(),name="password_reset_done"),
+    url(r'^user/password/reset/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',PasswordResetConfirmView.as_view(),{'post_reset_redirect' : '/user/password/done/'},name="password_reset_confirm"),
+    url(r'^user/password/done/$',PasswordResetCompleteView.as_view(),name="password_reset_done"),
 ]
 
 urlpatterns+=staticfiles_urlpatterns()

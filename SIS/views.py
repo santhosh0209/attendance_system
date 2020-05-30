@@ -2,8 +2,9 @@ from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse,reverse_lazy
-from django.shortcuts import render, get_object_or_404, redirect, render_to_response
+# from django.core.urlresolvers import reverse
+from django.urls import reverse,reverse_lazy
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView,View
 from django.views.generic import DetailView,ListView
 from django.db.models import Q
