@@ -252,7 +252,7 @@ class FacultyUpdate(UpdateView):
     template_name = 'update_form.html'
     success_url = reverse_lazy('profile')
     def user_passes_test(self, request):
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             self.object = self.get_object()
             return self.object == request.user.faculty
         return False
@@ -269,7 +269,7 @@ class StudentUpdate(UpdateView):
     template_name = 'update_form.html'
     success_url = reverse_lazy('profile')
     def user_passes_test(self, request):
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             self.object = self.get_object()
             return self.object == request.user.student
         return False
@@ -289,7 +289,7 @@ class UserUpdate(UpdateView):
     template_name = 'update_form.html'
     success_url = reverse_lazy('profile')
     def user_passes_test(self, request):
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             self.object = self.get_object()
             return self.object == request.user
         return False
