@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="    overflow-x: hidden !important; 
+" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Crescent{% endblock %}</title>
+    {% load staticfiles %}
+    <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}" />
+
+    <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Mono|Roboto+Slab&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption|Roboto|Ropa+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Boogaloo|Do+Hyeon|Permanent+Marker|Spicy+Rice|Titan+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <link rel="stylesheet" href="{% static 'css/f.css' %}">
+</head>
+
+<body class="font-ram">
+    <!--preloader starts-->
+
+
+
+
+
+    <!--preloader ends-->
+
+    <nav>
+        <label id="logo" class="logo"> Crescent <span id="span" style="color: #0082e6;">Education</span></label>
+        <ul id="active">
+            <li class="{% block albums_active %}{% endblock %}"><a href="{% url 'homepage' %}" class="active">Home</a></li>
+            <li class="{% block profile_active %}{% endblock %}"><a href="{% url 'profile' %}">profile</a></li>
+            {% if user.student %}
+            <li class="{% block supdate_active %}{% endblock %}"><a href="{% url 'studentupdate' user.student.id %}">update info</a></li>
+            {% elif user.faculty %}
+            <li class="{% block fupdate_active %}{% endblock %}"><a href="{% url 'facultyupdate' user.faculty.id %}">update info</a></li>
+            {% endif %}
+            <li class="{% block user_active %}{% endblock %}"><a href="{% url 'userupdate' user.username %}">settings</a></li>
+            <li class=""><a href="{% url 'logout' %}">logout</a></li>
+
+        </ul>
+        <div class="checkbtn"><i class="fa fa-bars" aria-hidden="true"></i></div>
+    </nav>
+    {% block body %} {% endblock %}
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js "></script>
+    <script src="{% static 'js/typed.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+
+</body>
+
+</html>
